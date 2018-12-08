@@ -1,0 +1,18 @@
+image: danlynn/ember-cli:3.0.0
+
+before_script:
+  - npm install
+
+stages:
+  - lint
+  - test
+
+lint:
+  stage: lint
+  script:
+    - npm run lint:js
+    - npm run lint:hbs
+
+test:
+  script:
+    - npm test
