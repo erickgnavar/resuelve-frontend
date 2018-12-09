@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">{{model.pagination.totalItems}} users</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      {{#link-to "index" class="btn btn-sm btn-outline-secondary"}}
+        {{fa-icon "plus"}} New user
+      {{/link-to}}
+    </div>
+  </div>
+</div>
+
+{{users-list model=model.records}}
+
+{{pagination-navbar pagination=model.pagination changePage=(action "changePage")}}

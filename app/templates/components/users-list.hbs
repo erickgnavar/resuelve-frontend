@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Middle name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Active?</th>
+          <th>Created date</th>
+          <th>Movements</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |user|}}
+          <tr>
+            <td>{{user.nombre}}</td>
+            <td>{{user.segundo_nombre}}</td>
+            <td>{{user.apellido}} {{user.segundo_apellido}}</td>
+            <td>{{user.email}}</td>
+            <td>
+              {{#if user.active}}
+                {{fa-icon "check-circle-o" size=2}}
+              {{else}}
+                {{fa-icon "times-circle-o" size=2}}
+              {{/if}}
+            </td>
+            <td>{{user.created_at}}</td>
+            <td>
+              {{#link-to "index" class="btn btn-outline-info btn-sm"}}
+                {{fa-icon "table"}} Movements
+              {{/link-to}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

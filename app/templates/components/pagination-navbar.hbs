@@ -1,0 +1,48 @@
+{{!-- TODO: Truncate pages list when it's long --}}
+<nav>
+  <ul class="pagination justify-content-center">
+    {{#if (eq pagination.page 1)}}
+      <li class="page-item disabled">
+        <button class="page-link" {{action "previousPage"}}>
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </button>
+      </li>
+    {{else}}
+      <li class="page-item">
+        <button class="page-link" {{action "previousPage"}}>
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </button>
+      </li>
+    {{/if}}
+
+    {{#each pageNumbers as |pageNumber|}}
+      {{#if (eq pagination.page pageNumber)}}
+        <li class="page-item active">
+          <button class="page-link" {{action "changePage" pageNumber}}>{{pageNumber}}</button>
+        </li>
+      {{else}}
+        <li class="page-item">
+          <button class="page-link" {{action "changePage" pageNumber}}>{{pageNumber}}</button>
+        </li>
+      {{/if}}
+    {{/each}}
+
+    {{#if (eq pagination.page pagination.totalPages)}}
+      <li class="page-item disabled">
+        <button class="page-link" {{action "nextPage"}}>
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+    {{else}}
+      <li class="page-item">
+        <button class="page-link" {{action "nextPage"}}>
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+    {{/if}}
+  </ul>
+</nav>
