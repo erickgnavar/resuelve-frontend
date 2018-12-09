@@ -1,6 +1,8 @@
 {{#if session.isAuthenticated}}
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Resuelve: {{session.data.authenticated.user.nombre}} {{session.data.authenticated.user.apellido}}</a>
+    {{#link-to "index" class="navbar-brand col-sm-3 col-md-2 mr-0"}}
+      Resuelve: {{session.data.authenticated.user.nombre}} {{session.data.authenticated.user.apellido}}
+    {{/link-to}}
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
         {{#link-to "logout" class="nav-link"}}
@@ -16,10 +18,10 @@
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              {{#link-to "index" class="nav-link"}}
                 {{fa-icon "home"}}
                 Dashboard <span class="sr-only">(current)</span>
-              </a>
+              {{/link-to}}
             </li>
           </ul>
 
