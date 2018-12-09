@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('logout');
   this.route('users');
   this.route('user-movements', { path: 'users/:user_id/movements' });
+  this.route('my-movements');
 });
 
 export default Router;
