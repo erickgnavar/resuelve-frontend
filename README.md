@@ -54,6 +54,11 @@ API_HOST: https://api.something.com
 
 Specify what it takes to deploy your app.
 
+## TODO
+
+- [ ] Add a role based filter to views, now the filter is based on hiding elements
+- [ ] Implement and adapter to interact with the API
+
 ## Further Reading / Useful Links
 
 * [ember.js](https://emberjs.com/)

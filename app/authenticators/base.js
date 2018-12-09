@@ -13,6 +13,7 @@ function parseJwt(token) {
 // Base class to manage different user roles
 export default Base.extend({
   endpoint: null,
+  role: null,
 
   restore(data) {
     if (data.token) {
@@ -39,7 +40,8 @@ export default Base.extend({
           let user = parseJwt(token);
           resolve({
             token: token,
-            user: user
+            user: user,
+            role: this.role,
           });
         });
       }).fail((xhr) => {
