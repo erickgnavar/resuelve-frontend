@@ -6,7 +6,7 @@ let credentials = {};
 
 // validations were declared here because are only 2 fields
 const validations = {
-  username: validatePresence(true),
+  email: validatePresence(true),
   password: validatePresence(true)
 };
 
@@ -20,10 +20,10 @@ export default Component.extend({
       changeset.validate()
         .then(() => {
           if (changeset.get('isValid')) {
-            let username = changeset.get('username');
+            let email = changeset.get('email');
             let password = changeset.get('password');
             this.get('session')
-              .authenticate('authenticator:credentials', username, password)
+              .authenticate('authenticator:client', email, password)
               .then(() => {
                 this.get('router').transitionTo('index');
               })

@@ -2,7 +2,6 @@ import Base from 'ember-simple-auth/authenticators/base';
 import { run } from '@ember/runloop';
 import $ from 'jquery';
 import { Promise } from 'rsvp';
-import ENV from 'resuelve/config/environment';
 
 
 function parseJwt(token) {
@@ -11,9 +10,9 @@ function parseJwt(token) {
   return JSON.parse(window.atob(base64));
 }
 
+// Base class to manage different user roles
 export default Base.extend({
-  endpoint: `${ENV.APP.API_HOST}/users/login`,
-  adminEndpoint: `${ENV.APP.API_HOST}/users/adminLogin`,
+  endpoint: null,
 
   restore(data) {
     if (data.token) {
@@ -23,16 +22,15 @@ export default Base.extend({
     }
   },
 
-  authenticate(username, password) {
+  // this should be implemented
+  // getPayload(identifier, password) {},
+
+  authenticate(identifier, password) {
     return new Promise((resolve, reject) => {
       $.ajax({
-        // TODO: allow to use different endpoint
-        url: this.adminEndpoint,
+        url: this.endpoint,
         method: 'POST',
-        data: JSON.stringify({
-          user: username,
-          password: password
-        }),
+        data: JSON.stringify(this.getPayload(identifier, password)),
         contentType: 'application/json',
         dataType: 'text'  // The server returns the error in plain html :/
       }).then((response, status, xhr) => {

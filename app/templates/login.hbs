@@ -2,6 +2,17 @@
 <br>
 <div class="text-center">
   <h1 class="h3 mb-3 font-weight-normal">Resuelve</h1>
-  <br>
-  {{login-form}}
+  {{#bs-button-group
+       value=userType
+       type="radio"
+       onChange=(action (mut userType)) as |bg|}}
+    {{#bg.button type="info" outline=true value="client"}}Client{{/bg.button}}
+    {{#bg.button type="info" outline=true value="admin"}}Admin{{/bg.button}}
+  {{/bs-button-group}}
+
+  {{#if (eq userType "admin")}}
+    {{admin-login-form}}
+  {{else}}
+    {{client-login-form}}
+  {{/if}}
 </div>
