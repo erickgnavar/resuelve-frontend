@@ -1,0 +1,13 @@
+<div class="btn-group mr-2">
+  <select class="custom-select" onchange={{action "setSortField" value="target.value"}}>
+    {{#each options as |opt|}}
+      <option value={{opt.value}}>{{opt.text}}</option>
+    {{/each}}
+  </select>
+  <button class="btn btn-sm btn-outline-secondary" {{action "setSortDirection" "desc"}}>
+    {{fa-icon "sort-alpha-desc" size=2}}
+  </button>
+  <button class="btn btn-sm btn-outline-secondary" {{action "setSortDirection" "asc"}}>
+    {{fa-icon "sort-alpha-asc" size=2}}
+  </button>
+</div>

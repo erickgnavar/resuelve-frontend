@@ -13,14 +13,20 @@ export default Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
     page: {
       refreshModel: true
-    }
+    },
+    sortBy: {
+      refreshModel: true
+    },
+    sortDirection: {
+      refreshModel: true
+    },
   },
 
   model(params) {
     // TODO: move this to an adapter
     let session = this.get('session').get('data');
     return new Promise((resolve, reject) => {
-      let url = `${ENV.APP.API_HOST}/users/list?page=${params.page}`;
+      let url = `${ENV.APP.API_HOST}/users/list?page=${params.page}&sortBy=${params.sortBy}&sortDirection=${params.sortDirection}`;
       let token = session.authenticated.token;
       $.ajax({
         url: url,
