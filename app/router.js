@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('logout');
   this.route('users');
+  this.route('user-movements', { path: 'users/:user_id/movements' });
 });
 
 export default Router;

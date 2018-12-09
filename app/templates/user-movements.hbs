@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-  <h1 class="h2">{{model.pagination.totalItems}} users</h1>
+  <h1 class="h2">{{model.pagination.totalItems}} movements</h1>
 </div>
 
-{{users-list model=model.records}}
+{{movements-list model=model.records}}
 
 {{pagination-navbar pagination=model.pagination changePage=(action "changePage")}}
